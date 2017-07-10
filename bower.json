@@ -1,0 +1,20 @@
+{
+  "name": "tuki-js",
+  "authors": [
+    "大豆 <ranh@qq.com>"
+  ],
+  "description": "tuki js lib",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
