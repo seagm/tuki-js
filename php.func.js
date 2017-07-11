@@ -26,10 +26,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-function nl2br(str) {
-    return str.replace(/\n/g, '<br>');
-}
-
 function nl2br(str, is_xhtml) {
     //  discuss at: http://phpjs.org/functions/nl2br/
     // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
@@ -53,36 +49,6 @@ function nl2br(str, is_xhtml) {
     return (str + '')
         .replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 }
-
-function guid() {
-    function S4() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
-
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
-}
-
-function number2string(number) {
-    string = '';
-    if (number >= 1000000000) {
-        floor1 = Math.floor(number / 10000000) / 100;
-        number = number - floor1 * 1000000000;
-        string = string + floor1 + 'b';
-    } else if (number >= 1000000) {
-        floor2 = Math.floor(number / 10000) / 100;
-        number = number - floor2 * 1000000;
-        string = string + floor2 + 'm';
-    } else if (number >= 1000) {
-        floor3 = Math.floor(number / 10) / 100;
-        number = number - floor3 * 1000;
-        string = string + floor3 + 'k';
-    } else if (number > 0) {
-        string = string + number;
-    } else {
-        string = '0';
-    }
-    return string;
-};
 
 function money_format(num) {
     sign = (num == (num = Math.abs(num)));
