@@ -97,7 +97,6 @@
                         $this.next().children('input[name=sms_verify_code]').removeClass('hide');
                     }
                 }, 1000);
-
                 return false;
             } else if (Operation_code == -1) {
                 $this.prev('div.sms_note').removeClass('success').addClass('alert');

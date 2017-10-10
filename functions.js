@@ -4,6 +4,49 @@ var console = console || {
     }
 }
 
+//拦截点击
+function() {
+//全局元素
+    var $head = $('head');
+    var $body = $('body');
+    //拦截 表单提交
+    $body.on('submit', 'form[target="background"]', function () {
+        var formData = new FormData(this);
+        var $form = $(this);
+        $.ajax(this.action, {
+            type: 'POST',
+            url: this.action,
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            timeout: 15000,
+        }).done(function (data, textStatus) {
+            processResponse($form, data);
+        }).fail(function (jqXHR, textStatus, error) {
+            var err = textStatus + ", " + error;
+            console.log("Request Failed: " + err);
+            alert(err);
+        }).always(function () {
+        });
+        return false;
+    });
+    //拦截 普通链接
+    $body.on('click', 'a[target="background"]', function () {
+        var $a = $(this);
+        $.getJSON($a.attr('href')
+        ).done(function (data) {
+            processResponse($a, data);
+        }).fail(function (jqxhr, textStatus, error) {
+            var err = textStatus + ", " + error;
+            console.log("Request Failed: " + err);
+            alert(err);
+        }).always(function () {
+        });
+        return false;
+    });
+}()
+
 function guid() {
     function S4() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
