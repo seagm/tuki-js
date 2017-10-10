@@ -1,37 +1,61 @@
 (function ($) {
-    $.popup = function (body, title) {
-        popup_box(body, title);
-        return jQuery;
+    $.call = function (funcName) {
+        var callLevel = funcName.split('.');
+
+        if (callLevel.length == 1) {
+            window[callLevel[0]].apply(window, Array.prototype.slice.call(arguments, 1))
+        } else if (callLevel.length == 2) {
+            window[callLevel[0]][callLevel[1]].apply(window[callLevel[0]], Array.prototype.slice.call(arguments, 1))
+        } else if (callLevel.length == 3) {
+            window[callLevel[0]][callLevel[1]][callLevel[2]].apply(window[callLevel[0]][callLevel[1]], Array.prototype.slice.call(arguments, 1))
+        } else {
+            alert('Call level up to two levels');
+        }
+
+        return $
     };
 
-    $.closePopup = function () {
-        close_popup_box();
-        return jQuery;
-    };
-
-    $.alert = function (message, tiptime) {
-        popup_alert(message, tiptime);
-        return jQuery;
+    $.redirect = function (href) {
+        location.href = href;
+        return $;
     },
 
-        $.notify = function (message) {
-            popup_notify(message);
-            return jQuery;
-        },
-
-        $.redirect = function (href) {
-            location.href = href;
-            return jQuery;
+        $.delayRedirect = function (href, delayTime) {
+            setTimeout(function () {
+                location.href = href;
+            }, delayTime);
+            return $;
         },
 
         $.refresh = function () {
             location.reload();
-            return jQuery;
+            return $;
         },
 
         $.reload = function () {
             location.reload();
-            return jQuery;
+            return $;
+        },
+
+        /*seagm业务*/
+        $.popup = function (body, title) {
+            popup_box(body, title);
+            return $;
+        };
+
+    $.closePopup = function () {
+        close_popup_box();
+        return $;
+    };
+
+    $.alert = function (message, tiptime) {
+        popup_alert(message, tiptime);
+        return $;
+    },
+
+        $.notify = function (message) {
+            popup_notify(message);
+            return $;
         },
 
         $.postform = function (uri, postfields) {
@@ -41,14 +65,14 @@
                 processResponse([], data);
             }, 'json');
 
-            return jQuery;
+            return $;
         },
 
         $.iframe = function (url, w, h, c) {
             popup_iframe(url, w, h, c);
-
-            return jQuery;
+            return $;
         }
+    /*seagm业务*/
 }(jQuery));
 
 (function ($) {
@@ -75,6 +99,7 @@
             return node;
         },
 
+        /*seagm业务*/
         smsCon: function (Operation_code, message, dataurl) {
             var $this = this;
             //不同的code不同的操作
@@ -159,6 +184,7 @@
                 $this.siblings(".btw").eq(0).prev('div.sms_note').text(message);
             }
             return this;
-        },
+        }
+        /*seagm业务*/
     });
 }(jQuery));

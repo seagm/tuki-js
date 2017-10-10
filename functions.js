@@ -45,7 +45,7 @@
         });
         return false;
     });
-})(window);
+}(window));
 
 function guid() {
     function S4() {
@@ -100,3 +100,5 @@ function processResponse($obj, data) {
         }
     }
 }
+
+//
