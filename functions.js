@@ -1,11 +1,11 @@
-var console = console || {
-    log: function () {
-        return;
-    }
-}
-
 //拦截点击
-function() {
+(function(w) {
+    w.console = w.console || {
+        log: function () {
+            return;
+        }
+    };
+
 //全局元素
     var $head = $('head');
     var $body = $('body');
@@ -45,7 +45,7 @@ function() {
         });
         return false;
     });
-}()
+})(window);
 
 function guid() {
     function S4() {
