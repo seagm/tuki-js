@@ -104,7 +104,7 @@
             var $this = this;
             //不同的code不同的操作
             if (Operation_code == 1) {
-                $this.addClass('disable');
+                $this.addClass('disabled');
                 $this.prev('div.sms_note').removeClass('alert').addClass('success');
                 $this.prev('div.sms_note').text(message);
                 var text = $this.children().text();
@@ -112,13 +112,13 @@
                 var t = setInterval(function () {
                     if (--secends < 0) {
                         clearInterval(t);
-                        $this.removeClass('disable').children().text('Send Code');
+                        $this.removeClass('disabled').children().text('Send Code');
                         $this.next().children('input[name=sms_verify_code]').attr('placeholder', 'Enter Verification Code').next().removeClass('incorrect');
                     } else {
-                        $this.children().text('Resend Code ' + ' ' + secends);
+                        $this.children().text('Resend ' + ' ' + secends);
                     }
                     if (secends < 57) {
-                        $this.next().next().removeClass('hide').removeClass('disable');
+                        $this.next().next().removeClass('hide').removeClass('disabled');
                         $this.next().children('input[name=sms_verify_code]').removeClass('hide');
                     }
                 }, 1000);
@@ -126,11 +126,11 @@
             } else if (Operation_code == -1) {
                 $this.prev('div.sms_note').removeClass('success').addClass('alert');
                 $this.prev('div.sms_note').text(message);
-                $this.next().next().addClass('hide').addClass('disable');
+                $this.next().next().addClass('hide').addClass('disabled');
                 $this.next().children('input[name=sms_verify_code]').addClass('hide');
                 return false;
             } else if (Operation_code == -2) {
-                $this.addClass('disable');
+                $this.addClass('disabled');
                 $this.prev('div.sms_note').removeClass('success').addClass('alert');
                 $this.prev('div.sms_note').text(message);
                 var text = $this.children().text();
@@ -138,20 +138,20 @@
                 var t = setInterval(function () {
                     if (--secends < 0) {
                         clearInterval(t);
-                        $this.removeClass('disable').children().text('Send Code');
+                        $this.removeClass('disabled').children().text('Send Code');
                         $this.next().children('input[name=sms_verify_code]').attr('placeholder', 'Enter Verification Code').next().removeClass('incorrect');
                     } else {
-                        $this.children().text('Resend Code ' + ' ' + secends);
+                        $this.children().text('Resend ' + ' ' + secends);
                     }
                     if (secends < 57) {
-                        $this.next().next().removeClass('hide').removeClass('disable');
+                        $this.next().next().removeClass('hide').removeClass('disabled');
                         $this.next().children('input[name=sms_verify_code]').removeClass('hide');
                     }
                 }, 1000);
 
                 return false;
             } else if (Operation_code == -7) {
-                $this.addClass('disable');
+                $this.addClass('disabled');
                 $this.prev('div.sms_note').removeClass('success').addClass('alert');
                 var message = '<a href=\"' + dataurl + '\">' + message + '</a>';
                 $this.prev('div.sms_note').html(message);
