@@ -126,7 +126,7 @@
             } else if (Operation_code == -1) {
                 $this.prev('div.sms_note').removeClass('success').addClass('alert');
                 $this.prev('div.sms_note').text(message);
-                $this.prev().next().next().find('div.alert').text(message);
+                $this.parent('div.sms_number').next().next().find('div.alert').text(message);
                 $this.next().next().addClass('hide').addClass('disabled');
                 $this.next().children('input[name=sms_verify_code]').addClass('hide');
                 return false;
