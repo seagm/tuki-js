@@ -178,6 +178,9 @@
                 $this.siblings(".btw").eq(0).prev('div.sms_note').removeClass('success');
                 $this.siblings(".btw").eq(0).prev('div.sms_note').addClass('alert');
                 $this.siblings(".btw").eq(0).prev('div.sms_note').text(message);
+            } else if(Operation_code == -2){
+                $this.removeClass('loading');
+                $this.parent('div.sms_number').next().next().find('div.alert').text(message);
             } else {
                 $this.prev('div').children('input[name=sms_verify_code]').val('').next().removeClass('loading');
                 $this.siblings(".btw").eq(0).prev('div.sms_note').removeClass('success');
